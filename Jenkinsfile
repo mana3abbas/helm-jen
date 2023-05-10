@@ -25,7 +25,7 @@ pipeline {
             steps {
                       sh """
                          echo "Running Helm"
-                         dir ("$workspace/HELM")
+                         dir ("$WORKSPACE/HELM")
                          helm install vois${BUILD_NUMBER} onboard-task
                         """                                    
                   }
