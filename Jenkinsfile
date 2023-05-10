@@ -23,7 +23,6 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                  dir ("$WORKSPACE/HELM")
                       sh """
                          echo "Running Helm"
                          helm install vois${BUILD_NUMBER} onboard-task
