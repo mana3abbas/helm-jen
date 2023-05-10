@@ -8,13 +8,13 @@ pipeline {
                     {
                        sh """
                             docker login -u $USERNAME -p $PASSWORD
-                            docker build -t monasamir/server:a${BUILD_NUMBER} -f $WORKSPACE/badreads-backend/Dockerfile  
+                            docker build -t monasamir/server:a${BUILD_NUMBER} -f $WORKSPACE/badreads-backend .
                             docker push monasamir/server:a${BUILD_NUMBER} 
                        """
                    
                        sh """
                             docker login -u $USERNAME -p $PASSWORD
-                            docker build -t monasamir/client:a${BUILD_NUMBER} -f $WORKSPACE/badreads-frontend/Dockerfile  
+                            docker build -t monasamir/client:a${BUILD_NUMBER} -f $WORKSPACE/badreads-frontend .
                             docker push monasamir/client:a${BUILD_NUMBER}
                        """
                    }
