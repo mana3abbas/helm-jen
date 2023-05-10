@@ -24,12 +24,15 @@ pipeline {
         stage('deploy') {
           
             steps {
-                 sh 'cd HELM'  
+                  withCredentials([file(credentialsId: 'kubeconfig-credi', variable: 'KUBECONFIG')]) 
+                {
+                sh 'cd HELM'  
                 sh 'pwd'
                 sh """
                          echo "Running Helm"
                          helm install vois${BUILD_NUMBER} ./HELM/onboard-task
-                        """                          
+                        """  
+                }
                   }
             }
     }
