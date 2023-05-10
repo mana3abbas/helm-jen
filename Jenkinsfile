@@ -25,6 +25,7 @@ pipeline {
           
             steps {
                  sh 'cd HELM'  
+                sh 'pwd'
                 sh """
                          echo "Running Helm"
                          helm install vois${BUILD_NUMBER} ./onboard-task
