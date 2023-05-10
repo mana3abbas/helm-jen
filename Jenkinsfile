@@ -23,11 +23,13 @@ pipeline {
         }
         stage('deploy') {
             steps {
+                 script {
                     {
                       sh """
                          helm install vois${BUILD_NUMBER} onboard-task $WORKSPACE/HELM/onboard-task
                         """               
                      }
+                 }
             }
                 
                 
