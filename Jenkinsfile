@@ -8,13 +8,13 @@ pipeline {
                     {
                        sh """
                             docker login -u $USERNAME -p $PASSWORD
-                            docker build -t monasamir/server:v${BUILD_NUMBER} $WORKSPACE/badreads-backend/ 
+                            docker build -t monasamir/server:v${BUILD_NUMBER} -f $WORKSPACE/badreads-backend/Dockerfile  
                             docker push monasamir/server:v${BUILD_NUMBER} 
                        """
                    
                        sh """
                             docker login -u $USERNAME -p $PASSWORD
-                            docker build -t monasamir/client:v${BUILD_NUMBER} $WORKSPACE/badreads-frontend/
+                            docker build -t monasamir/client:v${BUILD_NUMBER} -f $WORKSPACE/badreads-frontend/Dockerfile  
                             docker push monasamir/client:v${BUILD_NUMBER}
                        """
                    }
@@ -23,13 +23,15 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                     {
+                    {
                       sh """
-                          helm install vois${BUILD_NUMBER} onboard-task $WORKSPACE/HELM/onboard-task
-                        """
+                         helm install vois${BUILD_NUMBER} onboard-task $WORKSPACE/HELM/onboard-task
+                        """               
                      }
+            }
+                
                 
             }
-        }
+        
     }
 }
