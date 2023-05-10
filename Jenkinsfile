@@ -22,9 +22,10 @@ pipeline {
             }
         }
         stage('deploy') {
-            dir("HELM") 
+          
             steps {
-                      sh """
+                    dir("HELM")
+                    sh """
                          echo "Running Helm"
                          helm install vois${BUILD_NUMBER} onboard-task
                         """                                    
