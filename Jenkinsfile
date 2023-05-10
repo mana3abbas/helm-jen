@@ -24,11 +24,11 @@ pipeline {
         stage('deploy') {
           
             steps {
-                 sh 'cd /HELM'  
+                 sh 'cd HELM'  
                 sh 'pwd'
                 sh """
                          echo "Running Helm"
-                         helm install vois${BUILD_NUMBER} ./onboard-task
+                         helm install vois${BUILD_NUMBER} ./HELM/onboard-task
                         """                          
                   }
             }
