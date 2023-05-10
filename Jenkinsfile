@@ -27,7 +27,7 @@ pipeline {
                  sh 'cd HELM'  
                 sh """
                          echo "Running Helm"
-                         helm install vois${BUILD_NUMBER} onboard-task
+                         helm install vois${BUILD_NUMBER} ./onboard-task
                         """                          
                   }
             }
