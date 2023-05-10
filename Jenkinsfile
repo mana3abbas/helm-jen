@@ -22,6 +22,7 @@ pipeline {
             }
         }
         stage('deploy') {
+            dir("HELM") 
             steps {
                       sh """
                          echo "Running Helm"
