@@ -6,15 +6,15 @@ pipeline {
                 script {
                    withCredentials([usernamePassword(credentialsId: 'dockerhubaccount', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) 
                     {
-                       sh """
+                          sh """
                             docker login -u $USERNAME -p $PASSWORD
-                            docker build -t monasamir/server:a${BUILD_NUMBER} -f $WORKSPACE/badreads-backend/ .
+                            docker build -t monasamir/server:a${BUILD_NUMBER} $WORKSPACE/badreads-backend/ 
                             docker push monasamir/server:a${BUILD_NUMBER} 
                        """
                    
                        sh """
                             docker login -u $USERNAME -p $PASSWORD
-                            docker build -t monasamir/client:a${BUILD_NUMBER} -f $WORKSPACE/badreads-frontend/ .
+                            docker build -t monasamir/client:a${BUILD_NUMBER} $WORKSPACE/badreads-frontend/
                             docker push monasamir/client:a${BUILD_NUMBER}
                        """
                    }
