@@ -25,7 +25,7 @@ pipeline {
           
             steps {
                     sh """
-                       'cd HELM'
+                       'cd /HELM'
                         """              
               
                     sh """
