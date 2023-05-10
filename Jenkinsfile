@@ -24,7 +24,7 @@ pipeline {
         stage('deploy') {
           
             steps {
-                 sh 'cd HELM'  
+                 sh 'cd /HELM'  
                 sh 'pwd'
                 sh """
                          echo "Running Helm"
